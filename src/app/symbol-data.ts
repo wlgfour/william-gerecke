@@ -1,8 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 
-import { ChartDataSets, ChartOptions, ChartType } from 'chart.js';
-import { Color, Label, BaseChartDirective } from 'ng2-charts';
-
 export class SymbolData {
   private http: HttpClient;
   public symbol: string;
@@ -12,16 +9,16 @@ export class SymbolData {
   public promise: Promise<SymbolData>;
 
   // datapoints and dates will have the same number of elements
-  public keys: string[] = ['Open', 'High', 'Low', 'Close', 'Volume', 'Ex-Dividend', 'Split', 
+  public keys: string[] = ['Open', 'High', 'Low', 'Close', 'Volume', 'Ex-Dividend', 'Split',
                'Adj. Open', 'Adj. High', 'Adj. Low', 'Adj. Close', 'Adj.'];
   public datapoints: any = {
-    'Open':      [],
-    'High':      [],
-    'Low':       [],
-    'Close':     [],
-    'Volume':    [],
+    Open:      [],
+    High:      [],
+    Low:       [],
+    Close:     [],
+    Volume:    [],
     'Ex-Dividend': [],
-    'Split':     [],
+    Split:     [],
     'Adj. Open':   [],
     'Adj. High':   [],
     'Adj. Low':    [],
@@ -39,32 +36,28 @@ export class SymbolData {
 
   getData(): Promise<SymbolData> {
     // this is the function that will be called every time but the first time
-    this.getData = undefined  // remove this method since it gets whole datapoint history
+    this.getData = undefined;  // remove this method since it gets whole datapoint history
     console.log('--> SymbolData.getData <--');
     return new Promise((resolve, reject) => {
       this.http.get(this.url).subscribe(
-        (data) => {
-          console.log(data);
-          if(! data.hasOwnProperty('dataset_data')) {
+        (data: {dataset_data: {data: any}} | any) => {
+          // console.log(data);
+          if (! data.hasOwnProperty('dataset_data')) {
             console.log('Object did not have a dataset property');
             return;
-          } else if(! data['dataset_data'].hasOwnProperty('data')) {
+          } else if (! data.dataset_data.hasOwnProperty('data')) {
             console.log('Object.dataset did not have a data property');
             return;
           }
           console.log(`Successfully received data for ${this.symbol}`);
 
           // set the date as the x-axis
-          this.dates.push(...data['dataset_data']['data'].map(x => {
-            return x[0];
-          }));
+          this.dates.push(...data.dataset_data.data.map(x => x[0]));
 
           // set the y-axes
           this.keys.forEach((name, i) => {
             console.log(`  [${i}] ${name}`);
-            this.datapoints[name].push(...data['dataset_data']['data'].map(x => {
-              return x[i + 1];
-            }));
+            this.datapoints[name].push(...data.dataset_data.data.map(x => x[i + 1]));
           });
         },
         err => {
@@ -73,14 +66,14 @@ export class SymbolData {
         },
         () => {
           resolve(this);
-          console.log('<-- SymbolData.getData -->');
+          // console.log('<-- SymbolData.getData -->');
           this.updates.push(new Date());
         });
     });
   }
 
   withData(f: any) {
-    return this.promise.then(r => {f(r)});
+    return this.promise.then(r => {f(r); });
   }
 
 }

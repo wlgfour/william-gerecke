@@ -12,15 +12,15 @@ export class HistGetterService {
   constructor(private http: HttpClient) {  }
 
   fetchSymbol(symbol: string): void {
-    let url: string = `https://www.quandl.com/api/v3/datasets/WIKI/${symbol}/data.json?api_key=uj-G9RyGCpTrKwkfJtMT&limit=20`;
-    let data: SymbolData = new SymbolData(this.http, url, symbol);
+    const url = `https://www.quandl.com/api/v3/datasets/WIKI/${symbol}/data.json?api_key=uj-G9RyGCpTrKwkfJtMT&limit=20`;
+    const data: SymbolData = new SymbolData(this.http, url, symbol);
     this.datasets.set(symbol, data);
   }
 
   getSymbol(symbol: string): SymbolData | undefined {
-    if(symbol in this.datasets.keys()) {
+    if (symbol in this.datasets.keys()) {
       return this.datasets.get(symbol);
-    } else{
+    } else {
       this.fetchSymbol(symbol);
       return this.datasets.get(symbol);
     }
