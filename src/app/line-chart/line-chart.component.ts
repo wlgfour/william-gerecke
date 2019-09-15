@@ -11,13 +11,15 @@ import { Chart } from 'chart.js';
 })
 export class LineChartComponent implements OnInit {
   @ViewChild('canvas')
-  chartRef: ElementRef;
+  private chartRef: ElementRef;
   private chart;
   public symbols: string[] = ['GOOG', 'AAPL'];
   private show: string[] = ['Open'];
+  private metrics: Set<string> = new Set<string>();
   private datasets: any[] = [];
+  private symbolData: Map<string, SymbolData> = new Map<string, SymbolData>();
 
-  constructor(private histGetter: HistGetterService, private ElRef: ElementRef) {  }
+  constructor(private histGetter: HistGetterService) {  }
 
   ngOnInit() {
     this.chart = new Chart(this.chartRef.nativeElement, {
@@ -34,6 +36,9 @@ export class LineChartComponent implements OnInit {
           yAxes: [{
             display: true
           }],
+        },
+        legend: {
+          display: false
         }
       }
     });
@@ -52,9 +57,12 @@ export class LineChartComponent implements OnInit {
             }),
             y: d.dates,
             x: d.datapoints[k],
-            hidden: this.show.indexOf(k) === -1
+            hidden: this.show.indexOf(k) === -1,
+            backgroundColor: d.color
           });
+          this.metrics.add(k);
         }
+        this.symbolData.set(`${d.symbol}`, d);
         this.chart.update();
       });
     }

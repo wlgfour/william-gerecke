@@ -6,6 +6,8 @@ export class SymbolData {
   public url: string;
   public updates: Date[] = [];
 
+  private _color: string = randomRgba();
+
   public promise: Promise<SymbolData>;
 
   // datapoints and dates will have the same number of elements
@@ -76,4 +78,19 @@ export class SymbolData {
     return this.promise.then(r => {f(r); });
   }
 
+  get color(): string {
+    return this._color + '0.3)';
+  }
+
+  get solidColor(): string {
+    return this._color + '1)';
+  }
+
+}
+
+function randomRgba() {
+  const o = Math.round;
+  const r = Math.random;
+  const s = 255;
+  return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ',';
 }

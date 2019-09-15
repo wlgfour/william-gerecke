@@ -1,3 +1,33 @@
 <div>
-  <canvas #canvas width="85%"></canvas>
+  <canvas #canvas></canvas>
+</div>
+<div>
+  <ul class="legend">
+    <li>
+      <a>Search Bar</a>
+      <!--TODO-->
+    </li>
+
+    <li>
+      <a>Active Symbols</a>
+      <ul class="dropdown-content">
+        <li *ngFor="let d of symbolData | keyvalue" [style.backgroundColor]="d.value.color">
+          <a>
+            {{ d.key }}
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <li>
+      <a>Metrics</a>
+      <ul class="dropdown-content">
+        <li *ngFor="let k of metrics">
+          <a>
+            {{ k }}
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </div>
