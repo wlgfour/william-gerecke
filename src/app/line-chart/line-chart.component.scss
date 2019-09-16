@@ -2,65 +2,108 @@ $light: #eee;
 $dark: #333;
 
 div {
-  width: 80%;
   text-align: center;
   display: inline-block;
 }
 
 ul {
+  margin: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
   list-style: none;
   text-decoration: none;
+  font-family: monospace;
   li {
-    display: block;
+    display: inline-block;
     float: left;
     position: relative;
     transition: all 0.5s ease;
   }
   &.legend {
+    display: flex;
     > li {
-      min-width: 8em;
+      min-width: 6rem;
       cursor: default;
       padding: 1rem;
-      background-color: $light;
-      color: $dark;
-      &:hover {
-        background-color: $dark;
-        > a {
-          color: $light;
+      background-color: $dark;
+      color: $light;
+      &:hover,
+      &:focus {
+        background-color: $light;
+        > a,
+        > div.search > input {
+          color: $dark;
         }
         > .dropdown-content {
           display: block;
         }
       }
+      > div.search {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        &:after {
+          content: '';
+          display: block;
+          width: 0;
+          position: absolute;
+          right: 0;
+          transition: width 0.5s ease;
+          border-bottom: 4px solid darkcyan;
+        }
+        &:hover:after,
+        &:focus-within:after {
+          width: 100%;
+        }
+        > input {
+          text-transform: uppercase;
+          font-family: monospace;
+          transition: all 0.75s ease;
+          background: $dark;
+          color: $light;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: calc(100% - 6px);
+          border: none;
+          font-size: 1.2em;
+          padding-left: 5px;
+          &:hover,
+          &:focus {
+            background: $light;
+            color: $dark;
+            outline: none;
+          }
+        }
+      }
     }
   }
   &.dropdown-content {
+    background-color: $dark;
     position: absolute;
     left: 0;
-    margin-top: 1em;
+    margin-top: 3rem;
     padding-left: 0;
     display: none;
     width: 100%;
-    max-height: 16em;
+    max-height: 16rem;
     overflow-y: scroll;
     &:hover {
       display: block;
     }
     li {
-      padding-top: 1em;
-      padding-bottom: 1em;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
       cursor: pointer;
       width: 100%;
-      background-color: $light;
+      background-color: $dark;
       &:hover {
-        background: $dark;
-        color: brown;
+        background-color: $light;
+        color: $dark;
       }
     }
   }
 }
-//
-//ul li:hover > ul,
-//ul li ul:hover {
-//  display: block;
-//}
