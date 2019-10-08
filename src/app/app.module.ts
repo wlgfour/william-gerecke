@@ -1,11 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {HttpClientModule} from '@angular/common/http';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
 
-import { LineChartComponent } from './line-chart/line-chart.component';
+import {LineChartComponent} from './charts/line-chart/line-chart.component';
+import {LoggerService} from './shared/services/logger/logger.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { LineChartComponent } from './line-chart/line-chart.component';
     AppRoutingModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [LoggerService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

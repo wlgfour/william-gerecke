@@ -1,5 +1,5 @@
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
-import { HistGetterService } from '../hist-getter.service';
+import { HistGetterService } from '../../shared/services/hist-getter/hist-getter.service';
 import { SymbolData} from '../symbol-data';
 
 import { Chart } from 'chart.js';
@@ -17,7 +17,7 @@ export class LineChartComponent implements OnInit {
   private show: string[] = ['Open'];
   private metrics: Set<string> = new Set<string>();
   private datasets: any[] = [];
-  private symbolData: Map<string, SymbolData> = new Map<string, SymbolData>();
+  public symbolData: Map<string, SymbolData> = new Map<string, SymbolData>();
 
   constructor(private histGetter: HistGetterService) {  }
 
