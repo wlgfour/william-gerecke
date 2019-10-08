@@ -28,3 +28,8 @@ export class HistGetterService {
 
 }
 // 'https://www.quandl.com/api/v3/datasets/WIKI/AAPL.json?start_date=2018-01-01&api_key=uj-G9RyGCpTrKwkfJtMT'
+// download tickers:
+//    https://www.quandl.com/api/v3/databases/WIKI/metadata?api_key=uj-G9RyGCpTrKwkfJtMT
+// Sources with API key:
+//    Qandl
+//    Alpha Vantage

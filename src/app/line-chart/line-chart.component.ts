@@ -39,6 +39,11 @@ export class LineChartComponent implements OnInit {
         },
         legend: {
           display: false
+        },
+        tooltips: {
+          mode: 'x-axis',
+          position: 'nearest',
+          itemSort: (a, b, data) => a.y - b.y
         }
       }
     });
@@ -58,7 +63,12 @@ export class LineChartComponent implements OnInit {
             y: d.dates,
             x: d.datapoints[k],
             hidden: this.show.indexOf(k) === -1,
-            backgroundColor: d.color
+            backgroundColor: d.color,
+            borderColor: 'black',
+            pointBorderColor: 'black',
+            pointBorderWidth: 1,
+            pointRadius: 3,
+            borderWidth: 2,
           });
           this.metrics.add(k);
         }

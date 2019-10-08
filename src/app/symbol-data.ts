@@ -79,7 +79,7 @@ export class SymbolData {
   }
 
   get color(): string {
-    return this._color + '0.3)';
+    return this._color + '0.1)';
   }
 
   get solidColor(): string {
