@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SymbolData } from './symbol-data';
+import { SymbolData } from '../../../charts/symbol-data';
 
 @Injectable({
   providedIn: 'root'
