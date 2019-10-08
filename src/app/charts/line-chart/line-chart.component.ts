@@ -1,6 +1,6 @@
 import {Component, OnInit, ElementRef, ViewChild} from '@angular/core';
 import { HistGetterService } from '../../shared/services/hist-getter/hist-getter.service';
-import { SymbolData} from '../symbol-data';
+import { SymbolData} from '../../shared/classes/symbol-data';
 
 import { Chart } from 'chart.js';
 
