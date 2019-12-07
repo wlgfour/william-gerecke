@@ -6,6 +6,7 @@ import { LineChartComponent } from './line-chart/line-chart.component';
   declarations: [LineChartComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [LineChartComponent]
 })
 export class ChartsModule { }

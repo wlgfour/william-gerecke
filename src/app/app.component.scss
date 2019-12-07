@@ -1,0 +1,48 @@
+@import 'hamburgers/hamburgers';
+
+nav {
+  width: 100vw;background: rgb(247,247,247);
+  background: linear-gradient(90deg, rgba(247,247,247,1) 13%, rgba(208,203,203,1) 67%, rgba(129,170,180,1) 100%);
+
+  button {
+    display: none;
+  }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    li{
+      font-size: 3vh;
+      padding: 0.5em 1em 0.5em 1em;
+      font-family: monospace;
+
+      &:hover {
+        background-color: rgba(0, 139, 139, 0.15);
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+        display: block;
+      }
+    }
+  }
+  @media only screen and (max-width: 700px) {
+
+    button {
+      display: block;
+    }
+
+    ul {
+      flex-direction: column;
+    }
+
+    li {
+      overflow-y: hidden;
+      font-size: 5vw;
+    }
+  }
+}

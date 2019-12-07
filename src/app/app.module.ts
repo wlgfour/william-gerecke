@@ -6,22 +6,25 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
 import {LineChartComponent} from './charts/line-chart/line-chart.component';
-import {LoggerService} from './shared/services/logger/logger.service';
-import {HistGetterService} from './shared/services/hist-getter/hist-getter.service';
-import {BackendService} from './shared/services/backend/backend.service';
+import {LoggerService} from '../shared/services/logger/logger.service';
+import {HistGetterService} from '../shared/services/hist-getter/hist-getter.service';
+import {BackendService} from '../shared/services/backend/backend.service';
+import {ChartsModule} from './charts/charts.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LineChartComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ChartsModule
   ],
   providers: [LoggerService, HistGetterService, BackendService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }
