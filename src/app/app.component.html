@@ -1,12 +1,19 @@
 <!-- nav bar -->
 <nav>
-  <button class="hamburger hamburger--emphatic" type="button" aria-controls="navigation"
-  (click)="menuClick()" [ngClass]="menuStatus ? 'is-active' : ''">
+  <div id="navBurger">
+    <button class="hamburger hamburger--emphatic" type="button" aria-controls="navigation"
+            (click)="menuClick()" [ngClass]="{'is-active': menuStatus}">
     <span class="hamburger-box">
       <span class="hamburger-inner"></span>
     </span>
-  </button>
-  <ul>
+    </button>
+  </div>
+  <ul [ngStyle]="{'bottom': menuStatus ? '0' : '900px'}">
+    <li routerLinkActive="active">
+      <a routerLink="/home">
+        Home
+      </a>
+    </li>
     <li>
       <a routerLink="/projects" routerLinkActive="active">
         Projects
@@ -23,8 +30,8 @@
       </a>
     </li>
     <li>
-      <a routerLink="/contacts" routerLinkActive="active">
-        Contacts
+      <a routerLink="/contact" routerLinkActive="active">
+        Contact
       </a>
     </li>
   </ul>

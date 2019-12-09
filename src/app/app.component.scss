@@ -1,48 +1,71 @@
 @import 'hamburgers/hamburgers';
+@import 'variables';
 
 nav {
-  width: 100vw;background: rgb(247,247,247);
-  background: linear-gradient(90deg, rgba(247,247,247,1) 13%, rgba(208,203,203,1) 67%, rgba(129,170,180,1) 100%);
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: 100;
+  //background: rgb(247,247,247);
+  //background: linear-gradient(90deg, rgba(247,247,247,1) 13%, rgba(208,203,203,1) 67%, rgba(129,170,180,1) 100%);
 
-  button {
+  #navBurger {
     display: none;
+    z-index: 1;
   }
 
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: flex;
+    height: fit-content;
+    border-bottom: 1px solid $veryLightGrey;
+    display: flow-root;
+    z-index: -1;
 
-    li{
-      font-size: 3vh;
-      padding: 0.5em 1em 0.5em 1em;
-      font-family: monospace;
+    li {
+      display: block;
+      float: right;
 
-      &:hover {
+      :hover {
         background-color: rgba(0, 139, 139, 0.15);
       }
 
+      &.active {
+         background-color: rgba(0, 139, 139, 0.15);
+       }
+
       a {
+        display: block;
+        font-size: 3vh;
+        font-family: monospace;
         text-decoration: none;
         color: #000;
-        display: block;
+        padding: 0.5em 1.5em 0.5em 1.5em;
       }
     }
+
+    li:first-child {
+      outline: 1px solid $veryLightGrey;
+    }
   }
+
   @media only screen and (max-width: 700px) {
 
-    button {
+    #navBurger {
       display: block;
+      background: white;
+      width: 100%;
     }
 
     ul {
-      flex-direction: column;
-    }
+      transition: 1s all;
+      position: relative;
+      background: white;
 
-    li {
-      overflow-y: hidden;
-      font-size: 5vw;
+      li {
+        width: 100%;
+      }
     }
   }
 }
