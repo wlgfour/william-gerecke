@@ -5,12 +5,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 
-import {LineChartComponent} from './charts/line-chart/line-chart.component';
 import {LoggerService} from '../shared/services/logger/logger.service';
 import {HistGetterService} from '../shared/services/hist-getter/hist-getter.service';
 import {BackendService} from '../shared/services/backend/backend.service';
 import {ChartsModule} from './charts/charts.module';
 import { HomeComponent } from './home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,6 +21,7 @@ import { HomeComponent } from './home/home.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    BrowserAnimationsModule,
     ChartsModule
   ],
   providers: [LoggerService, HistGetterService, BackendService],

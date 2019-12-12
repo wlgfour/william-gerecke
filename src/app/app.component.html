@@ -8,7 +8,7 @@
     </span>
     </button>
   </div>
-  <ul [ngStyle]="{'bottom': menuStatus ? '0' : '900px'}">
+  <ul [ngClass]="{'menuHidden': !menuStatus}">
     <li routerLinkActive="active">
       <a routerLink="/home">
         Home
