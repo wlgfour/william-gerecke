@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, HostListener, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, OnInit} from '@angular/core';
 import anime from 'animejs/lib/anime.es.js';
 
 interface ILine {
@@ -18,8 +18,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
   innerWidth: number;
   innerHeight: number;
   lines: ILine[] = [];
+  elementRef: ElementRef;
 
-  constructor() {
+  constructor(elementRefL: ElementRef) {
+    this.elementRef = elementRefL;
   }
 
   ngOnInit() {
@@ -41,6 +43,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   appendHeader() {
     setTimeout(() => {
+      if (!this.elementRef.nativeElement.offsetParent) { return; }
       const header = document.getElementById('header');
       if (header.innerHTML.length < this.header.length) {
         header.innerHTML += this.header.charAt(header.innerHTML.length);

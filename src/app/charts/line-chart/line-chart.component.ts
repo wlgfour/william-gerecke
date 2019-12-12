@@ -10,12 +10,12 @@ import { Chart } from 'chart.js';
   styleUrls: ['./line-chart.component.scss']
 })
 export class LineChartComponent implements OnInit {
-  @ViewChild('canvas')
+  @ViewChild('canvas', { static: true })
   private chartRef: ElementRef;
   private chart;
   public symbols: string[] = ['GOOG', 'AAPL'];
   private show: string[] = ['Open'];
-  private metrics: Set<string> = new Set<string>();
+  public metrics: Set<string> = new Set<string>();
   private datasets: any[] = [];
   public symbolData: Map<string, SymbolData> = new Map<string, SymbolData>();
 

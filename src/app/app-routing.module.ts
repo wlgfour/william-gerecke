@@ -13,6 +13,11 @@ const routes: Routes = [
     component: HomeComponent
   },
   {
+    path: 'cv',
+    // loadChildren: () => CvModule,
+    loadChildren: () => import('./cv/cv.module').then(m => m.CvModule)
+  },
+  {
     path: '',
     redirectTo: '/home',
     pathMatch: 'full'
