@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "heroku-postbuild": "ng build --prod"
+    "build:deploy": "ng build --prod --base-href https://wlgfour.github.io/william-gerecke/ dash",
+    "deploy": "npm run build:deploy && ngh -d ./dist/dash"
   },
   "private": true,
   "dependencies": {
@@ -25,9 +26,9 @@
     "@types/animejs": "^3.1.0",
     "angular-cli-ghpages": "^0.5.3",
     "animejs": "^3.1.0",
-    "chart.js": "^2.8.0",
-    "core-js": "^2.5.4",
-    "ng2-charts": "^2.2.0",
+    "chart.js": "^2.9.3",
+    "core-js": "^2.6.11",
+    "ng2-charts": "^2.3.0",
     "rxjs": "~6.5.3",
     "tslib": "^1.9.0",
     "typescript": "~3.5.3",
@@ -37,7 +38,7 @@
     "@angular-devkit/build-angular": "~0.803.20",
     "@angular/language-service": "~8.2.14",
     "@types/jasmine": "~2.8.8",
-    "@types/jasminewd2": "~2.0.3",
+    "@types/jasminewd2": "^2.0.8",
     "@types/node": "~8.9.4",
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
