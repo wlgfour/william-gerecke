@@ -1,6 +1,10 @@
 @import 'hamburgers/hamburgers';
 @import 'variables';
 
+#routerWrapper {
+  position: relative;
+}
+
 nav {
   position: absolute;
   top: 0;

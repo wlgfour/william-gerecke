@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, ElementRef, HostListener, OnInit} from '@angular/core';
-import anime from 'animejs/lib/anime.es.js';
+import {animate, transition, trigger} from '@angular/animations';
 
 interface ILine {
   x1: number;
@@ -11,9 +11,17 @@ interface ILine {
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
+  animations: [
+    trigger('homeLoadAnimations', [
+      transition(':enter', [
+        animate('1ms')
+      ]),
+    ]),
+  ]
 })
-export class HomeComponent implements OnInit, AfterViewInit {
+export class HomeComponent
+  implements OnInit, AfterViewInit {
   header = 'William Gerecke';
   innerWidth: number;
   innerHeight: number;
@@ -31,7 +39,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.appendHeader();
   }
 
   @HostListener('window:resize', ['$event'])

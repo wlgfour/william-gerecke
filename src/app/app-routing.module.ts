@@ -6,21 +6,23 @@ import {HomeComponent} from './home/home.component';
 const routes: Routes = [
   {
     path: 'chart',
-    component: LineChartComponent
+    component: LineChartComponent,
+    data: { animation: 'chartPage' },
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    data: { animation: 'homePage' },
   },
   {
     path: 'cv',
-    // loadChildren: () => CvModule,
-    loadChildren: () => import('./cv/cv.module').then(m => m.CvModule)
+    loadChildren: () => import('./cv/cv.module').then(m => m.CvModule),
+    data: { animation: 'cvPage' },
   },
   {
     path: '',
     redirectTo: '/home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
 ];
 

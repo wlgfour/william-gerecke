@@ -1,12 +1,17 @@
-<div>
-  <h1 id="header" align="center" class="blinking-cursor"></h1>
-</div>
+<div
+  [@homeLoadAnimations]
+  (@homeLoadAnimations.done)="appendHeader()"
+>
+  <div>
+    <h1 id="header" align="center" class="blinking-cursor"></h1>
+  </div>
 
-<svg>
-  <line *ngFor="let i of lines"
-        [attr.x1]=i.x1
-        [attr.y1]=i.y1
-        [attr.x2]=i.x2
-        [attr.y2]=i.y2>
-  </line>
-</svg>
+  <svg>
+    <line *ngFor="let i of lines"
+          [attr.x1]=i.x1
+          [attr.y1]=i.y1
+          [attr.x2]=i.x2
+          [attr.y2]=i.y2>
+    </line>
+  </svg>
+</div>

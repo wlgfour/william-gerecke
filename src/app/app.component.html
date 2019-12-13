@@ -24,11 +24,6 @@
         CV
       </a>
     </li>
-    <!--<li routerLinkActive="active">-->
-      <!--<a routerLink="/experience">-->
-        <!--Experience-->
-      <!--</a>-->
-    <!--</li>-->
     <li routerLinkActive="active">
       <a routerLink="/contact">
         Contact
@@ -37,4 +32,8 @@
   </ul>
 </nav>
 
-<router-outlet></router-outlet>
+<div id="routerWrapper"
+     [@routeAnimations]="prepareRoute(outlet)"
+>
+  <router-outlet #outlet="outlet"></router-outlet>
+</div>
